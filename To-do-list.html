@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-[crimson]">
+    <div class="max-w-md mx-auto mt-8 p-6  rounded-lg shadow-lg border border-black bg-blue-100">
+        <form class="w-[90%] mx-auto">
+
+            <div class="flex">
+                <input type="text " class="border-2 border-black w-[70%]" placeholder="text" name="" id="textsearch">
+                <button class="bg-green-600 sm:px-[10px] px-[5px] sm:py-[5px] py-[2px] border-none rounded"
+                    id="clickaddButton">ADD
+                    TASK</button>
+            </div>
+
+            <ul class="mt-[5px] " id="ulmain">
+
+
+            </ul>
+
+        </form>
+
+
+    </div>
+
+</body>
+
+<script>
+    let clickaddButton = document.querySelector("#clickaddButton");
+    clickaddButton.addEventListener("click", (event) => {
+        event.preventDefault();
+        let task = textsearch.value;
+        if (task !== '') {
+            ulmain.innerHTML += ` <li class="flex justify-between border-b border-[grey] items-center pb-[5px]">
+                    <input type="checkbox" name="" id="inputcheckbox">
+                    <h5>${task}</h5>
+                    <button class="bg-[red] sm:px-[10px] px-[2px] sm:py-[3px] py-[1px] rounded" id="deletebtn">Delete</button>
+                </li>`
+        }
+        else {
+            prompt("please type some value")
+        }
+        textsearch.value = '';
+        let deletebtn = document.querySelectorAll("#deletebtn");
+        deletebtn.forEach(v => {
+            v.addEventListener("click", () => {
+                v.parentNode.remove();
+            })
+        })
+    })
+
+</script>
+
+</html>
